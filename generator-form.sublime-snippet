@@ -1,0 +1,68 @@
+<snippet>
+  <tabTrigger>generator-form</tabTrigger>
+  <content><![CDATA[
+namespace Drupal\\${1:module}\Form;
+
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+/**
+ * Class ${TM_FILENAME/(\w+)\.php/\1/g}.
+ */
+class ${TM_FILENAME/(\w+)\.php/\1/g} extends FormBase {
+
+  /**
+   * Constructs a new ${TM_FILENAME/(\w+)\.php/\1/g} object.
+   */
+  public function __construct() {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface \$container) {
+    return new static();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFormId() {
+    return '${2:form_id}';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildForm(array \$form, FormStateInterface \$form_state) {
+    \$form['submit'] = [
+      '#type' => 'submit',
+      '#value' => \$this->t('Submit'),
+    ];
+
+    return \$form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &\$form, FormStateInterface \$form_state) {
+    parent::validateForm(\$form, \$form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &\$form, FormStateInterface \$form_state) {
+    // Display result.
+    foreach (\$form_state->getValues() as \$key => \$value) {
+      \Drupal::messenger()->addMessage(\$key . ': ' . \$value);
+    }
+
+  }
+
+}]]></content>
+  <!-- @todo: set source -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,21 @@
+<snippet>
+  <tabTrigger>generator-service</tabTrigger>
+  <content><![CDATA[
+namespace Drupal\\${1:module};
+
+/**
+ * Class ${TM_FILENAME/(\w+)\.php/\1/g}.
+ */
+class ${TM_FILENAME/(\w+)\.php/\1/g} {
+
+  /**
+   * Constructs a new ${TM_FILENAME/(\w+)\.php/\1/g} object.
+   */
+  public function __construct() {
+
+  }
+
+}]]></content>
+  <!-- @todo: set source -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

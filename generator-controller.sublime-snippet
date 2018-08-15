@@ -1,0 +1,42 @@
+<snippet>
+  <tabTrigger>generator-controller</tabTrigger>
+  <content><![CDATA[
+namespace Drupal\\${1:module}\Controller;
+
+use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+/**
+ * Class ${TM_FILENAME/(\w+)\.php/\1/g}.
+ */
+class ${TM_FILENAME/(\w+)\.php/\1/g} extends ControllerBase {
+
+  /**
+   * Constructs a new ${TM_FILENAME/(\w+)\.php/\1/g} object.
+   */
+  public function __construct() {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface \$container) {
+    return new static();
+  }
+
+  /**
+   * ${2:Route description}.
+   *
+   * @return string
+   *   Return Hello string.
+   */
+  public function ${3:routeName}() {
+    return [
+      '#type' => 'markup',
+      '#markup' => \$this->t('Implement method: ${3:routeName}')
+    ];
+  }
+}]]></content>
+  <!-- @todo: set source -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

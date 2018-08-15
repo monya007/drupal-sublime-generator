@@ -1,0 +1,77 @@
+<snippet>
+  <tabTrigger>generator-block</tabTrigger>
+  <content><![CDATA[
+namespace Drupal\\${1:module}\Plugin\Block;
+
+use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+/**
+ * Provides a '${TM_FILENAME/(\w+)\.php/\1/g}' block.
+ *
+ * @Block(
+ *  id = "${2:plugin_id}",
+ *  admin_label = @Translation("${3:label}"),
+ * )
+ */
+class ${TM_FILENAME/(\w+)\.php/\1/g} extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Constructs a new ${TM_FILENAME/(\w+)\.php/\1/g} object.
+   *
+   * @param array
+   *   A configuration array containing information about the plugin instance.
+   * @param string
+   *   The plugin_id for the plugin instance.
+   * @param string
+   *   The plugin implementation definition.
+   */
+  public function __construct(array \$configuration, \$plugin_id, \$plugin_definition) {
+    parent::__construct(\$configuration, \$plugin_id, \$plugin_definition);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface \$container, array \$configuration, \$plugin_id, \$plugin_definition) {
+    return new static(
+      \$configuration,
+      \$plugin_id,
+      \$plugin_definition
+    );
+  }
+  /**
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    return [
+    ] + parent::defaultConfiguration();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm(\$form, FormStateInterface \$form_state) {
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit(\$form, FormStateInterface \$form_state) {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function build() {
+    \$build = [];
+    return \$build;
+  }
+
+}]]></content>
+  <!-- @todo: set source -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

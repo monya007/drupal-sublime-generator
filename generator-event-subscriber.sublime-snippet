@@ -1,0 +1,41 @@
+<snippet>
+  <tabTrigger>generator-event-subscriber</tabTrigger>
+  <content><![CDATA[
+namespace Drupal\\${1:module}\EventSubscriber;
+
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\EventDispatcher\Event;
+
+/**
+ * Class ${TM_FILENAME/(\w+)\.php/\1/g}.
+ */
+class ${TM_FILENAME/(\w+)\.php/\1/g} implements EventSubscriberInterface {
+
+  /**
+   * Constructs a new ${TM_FILENAME/(\w+)\.php/\1/g} object.
+   */
+  public function __construct() {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  static function getSubscribedEvents() {
+    \$events['${2:event_name}'] = ['${3:event_callback}'];
+    return $events;
+  }
+
+  /**
+   * This method is called whenever the {{ event_name }} event is
+   * dispatched.
+   *
+   * @param GetResponseEvent $event
+   */
+  public function ${3:event_callback}(Event \$event) {
+    \Drupal::messenger()->addMessage('Event ${2:event_name} thrown by Subscriber in module ${1:module}.', 'status', TRUE);
+  }
+
+}]]></content>
+  <!-- @todo: set source -->
+  <!-- <scope>source.python</scope> -->
+</snippet>
